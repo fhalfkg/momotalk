@@ -33,7 +33,6 @@ class _StudentCardWidgetState extends State<StudentCardWidget> {
               Image(
                   image: AssetImage('images/arona.png'), width: 50, height: 50),
               Column(
-                mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -47,6 +46,9 @@ class _StudentCardWidgetState extends State<StudentCardWidget> {
                     child: Text(
                       widget.status,
                       style: TextStyle(fontSize: 10, color: Colors.grey),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      softWrap: false,
                     ),
                     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
                   ),

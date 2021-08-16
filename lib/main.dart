@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:momotalk/components/studentcard.dart';
+import 'package:momotalk/momofriends.dart';
+import 'package:momotalk/talklist.dart';
 import 'package:momotalk/tools/creatematerialcolor.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,9 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Momotalk',
       theme: ThemeData(
           primarySwatch: createMaterialColor(Color(0xFFFA92A4)),
+          primaryTextTheme: TextTheme(
+            headline6: TextStyle(color: Colors.white),
+          ),
+          primaryIconTheme: IconThemeData(color: Colors.white),
           fontFamily: 'GyeonggiTitle'),
       home: MyHomePage(),
     );
@@ -30,6 +37,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+  var _packageInfo;
+  final List<Widget> _children = [MomoFriendsPage(), TalkListPage()];
+
+  @override
+  void initState() {
+    super.initState();
+    getPackageInfo();
+  }
+
+  getPackageInfo() async {
+    var packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _packageInfo = packageInfo;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,11 +59,26 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text(
-          "MomoTalk",
-          style: TextStyle(color: Colors.white),
-        ),
+        title: Text("MomoTalk"),
         titleSpacing: 25,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.info_outline),
+            onPressed: () => {
+              showAboutDialog(
+                context: context,
+                applicationIcon: Image(
+                  image: AssetImage('images/arona.png'),
+                  width: 40,
+                  height: 40,
+                ),
+                applicationName: "MomoTalk",
+                applicationVersion: "v${_packageInfo.version}(${_packageInfo.buildNumber})",
+                applicationLegalese: "이 앱은 공식 허가를 받지 않았습니다.\n제작자: BrainInAVet",
+              ),
+            },
+          )
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -73,25 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            StudentCardWidget(
-              studentName: "아로나",
-              status: "학생",
-            ),
-            StudentCardWidget(
-              studentName: "시로코",
-              status: "학생2",
-            ),
-            StudentCardWidget(
-              studentName: "히후미",
-              status: "학생3",
-            ),
-          ],
-        ),
-      ),
+      body: _children[_currentIndex],
     );
   }
 }
