@@ -2,7 +2,7 @@
 
 MomoTalk from Blue Archive as an app.
 
-I've tried to refer to the game and the official PV. However, please understand that it may be different from the original because there are parts made by imagination.
+I've tried to refer to the game and the official PV. However, please note that it may be different from the original because there are parts made by imagination.
 
 # How to Build
 
