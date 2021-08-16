@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class StudentCardWidget extends StatefulWidget {
+  final String studentCode;
   final String studentName;
   final String status;
 
   const StudentCardWidget({
     Key? key,
+    required this.studentCode,
     required this.studentName,
     required this.status,
   }) : super(key: key);
@@ -31,7 +33,7 @@ class _StudentCardWidgetState extends State<StudentCardWidget> {
           child: Row(
             children: [
               Image(
-                  image: AssetImage('images/arona.png'), width: 50, height: 50),
+                  image: AssetImage("images/${widget.studentCode}.png"), width: 50, height: 50),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -45,7 +47,7 @@ class _StudentCardWidgetState extends State<StudentCardWidget> {
                   Container(
                     child: Text(
                       widget.status,
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
+                      style: TextStyle(fontSize: 13, color: Colors.grey),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       softWrap: false,

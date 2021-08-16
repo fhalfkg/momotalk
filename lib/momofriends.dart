@@ -17,16 +17,19 @@ class _MomoFriendsPageState extends State<MomoFriendsPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           StudentCardWidget(
+            studentCode: 'arona',
             studentName: "아로나",
-            status: "학생",
+            status: "기다리고 있을게요, 선생님",
           ),
           StudentCardWidget(
+            studentCode: 'shiroko',
             studentName: "시로코",
-            status: "학생2",
+            status: "라이딩 팀원 모집 중...... (아직 1/5)",
           ),
           StudentCardWidget(
-            studentName: "히후미",
-            status: "학생3",
+            studentCode: 'yuzu',
+            studentName: "유즈",
+            status: "404 Not Found",
           ),
         ],
       ),

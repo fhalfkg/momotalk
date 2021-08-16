@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Text("MomoTalk"),
+        title: Image(image: AssetImage('images/momotalk.png'), width: 100),
         titleSpacing: 25,
         actions: [
           IconButton(

@@ -47,9 +47,13 @@ flutter:
   uses-material-design: true
 
   assets:
+    - images/momotalk.png
     - images/people.svg
     - images/talk.svg
     - images/arona.png
+    - images/shiroko.png
+    - images/hifumi.png
+    - images/yuzu.png
 
   fonts:
     - family: GyeonggiTitle
