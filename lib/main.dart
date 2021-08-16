@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:momotalk/momofriends.dart';
-import 'package:momotalk/talklist.dart';
-import 'package:momotalk/tools/creatematerialcolor.dart';
+import 'momofriends.dart';
+import 'talklist.dart';
+import 'tools/creatematerialcolor.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 void main() {
@@ -40,17 +40,17 @@ class _MyHomePageState extends State<MyHomePage> {
   var _packageInfo;
   final List<Widget> _children = [MomoFriendsPage(), TalkListPage()];
 
-  @override
-  void initState() {
-    super.initState();
-    getPackageInfo();
-  }
-
   getPackageInfo() async {
     var packageInfo = await PackageInfo.fromPlatform();
     setState(() {
       _packageInfo = packageInfo;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getPackageInfo();
   }
 
   @override
@@ -73,7 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 40,
                 ),
                 applicationName: "MomoTalk",
-                applicationVersion: "v${_packageInfo.version}(${_packageInfo.buildNumber})",
+                applicationVersion:
+                    "v${_packageInfo.version}(${_packageInfo.buildNumber})",
                 applicationLegalese: "이 앱은 공식 허가를 받지 않았습니다.\n제작자: BrainInAVet",
               ),
             },

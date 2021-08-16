@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'components/studentcard.dart';
 
 class MomoFriendsPage extends StatefulWidget {
@@ -10,29 +12,40 @@ class MomoFriendsPage extends StatefulWidget {
 }
 
 class _MomoFriendsPageState extends State<MomoFriendsPage> {
+  List? studentsKo;
+  List? studentsCode;
+  List? status;
+
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('json/students.json');
+    final data = await json.decode(response);
+    setState(() {
+      studentsKo = data['students_ko'];
+      studentsCode = data['students_code'];
+      status = data['status'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          StudentCardWidget(
-            studentCode: 'arona',
-            studentName: "아로나",
-            status: "기다리고 있을게요, 선생님",
-          ),
-          StudentCardWidget(
-            studentCode: 'shiroko',
-            studentName: "시로코",
-            status: "라이딩 팀원 모집 중...... (아직 1/5)",
-          ),
-          StudentCardWidget(
-            studentCode: 'yuzu',
-            studentName: "유즈",
-            status: "404 Not Found",
-          ),
-        ],
-      ),
+    return FutureBuilder(
+      future: readJson(),
+      builder: (BuildContext context, snapshot) {
+        if (studentsKo != null && studentsCode != null && status != null) {
+          return ListView.builder(
+            itemCount: 3,
+            itemBuilder: (BuildContext context, int index) {
+              return StudentCardWidget(
+                studentCode: studentsCode?[index],
+                studentName: studentsKo?[index],
+                status: status?[index],
+              );
+            },
+          );
+        } else {
+          return Scaffold();
+        }
+      },
     );
   }
 }
