@@ -19,7 +19,7 @@ class _StudentCardWidgetState extends State<StudentCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(15, 10, 15, 0),
+      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
       child: Card(
         margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
         shape: RoundedRectangleBorder(

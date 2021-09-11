@@ -7,6 +7,7 @@ import 'tools/creatematerialcolor.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 void main() {
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   runApp(MyApp());
 }
 
@@ -55,7 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -63,7 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
         titleSpacing: 25,
         actions: [
           IconButton(
-            icon: Icon(Icons.info_outline),
+            icon: Icon(
+              Icons.info_outline,
+              color: Colors.white,
+            ),
             onPressed: () => {
               showAboutDialog(
                 context: context,

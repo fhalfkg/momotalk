@@ -33,7 +33,7 @@ class _MomoFriendsPageState extends State<MomoFriendsPage> {
       builder: (BuildContext context, snapshot) {
         if (studentsKo != null && studentsCode != null && status != null) {
           return ListView.builder(
-            itemCount: 3,
+            itemCount: 57,
             itemBuilder: (BuildContext context, int index) {
               return StudentCardWidget(
                 studentCode: studentsCode?[index],

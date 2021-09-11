@@ -32,11 +32,30 @@ class _TalkListPageState extends State<TalkListPage> {
       builder: (BuildContext context, snapshot) {
         if (studentsKo != null && studentsCode != null) {
           return ListView.builder(
-            itemCount: 3,
+            itemCount: 57,
             itemBuilder: (BuildContext context, int index) {
               return TalkCardWidget(
                 studentCode: studentsCode?[index],
                 studentName: studentsKo?[index],
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text("에피소드 선택"),
+                        content: Text("테스트"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("확인"),
+                          )
+                        ],
+                      );
+                    },
+                  );
+                },
               );
             },
           );
