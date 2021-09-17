@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:momotalk/talkroom.dart';
 
 import 'components/talkcard.dart';
 
@@ -38,23 +39,30 @@ class _TalkListPageState extends State<TalkListPage> {
                 studentCode: studentsCode?[index],
                 studentName: studentsKo?[index],
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text("에피소드 선택"),
-                        content: Text("테스트"),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text("확인"),
-                          )
-                        ],
-                      );
-                    },
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          TalkRoomPage(title: studentsKo?[index]),
+                    ),
                   );
+                  // showDialog(
+                  //   context: context,
+                  //   builder: (BuildContext context) {
+                  //     return AlertDialog(
+                  //       title: Text("에피소드 선택"),
+                  //       content: Text("테스트"),
+                  //       actions: [
+                  //         TextButton(
+                  //           onPressed: () {
+                  //             Navigator.pop(context);
+                  //           },
+                  //           child: Text("확인"),
+                  //         ),
+                  //       ],
+                  //     );
+                  //   },
+                  // );
                 },
               );
             },

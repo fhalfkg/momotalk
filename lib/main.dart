@@ -7,8 +7,8 @@ import 'tools/creatematerialcolor.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 void main() {
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   runApp(MyApp());
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
 class MyApp extends StatelessWidget {
@@ -61,12 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: false,
         title: Image(image: AssetImage('images/momotalk.png'), width: 100),
         titleSpacing: 25,
+        iconTheme: IconThemeData(color: Colors.white),
         actions: [
           IconButton(
-            icon: Icon(
-              Icons.info_outline,
-              color: Colors.white,
-            ),
+            icon: Icon(Icons.info_outline),
             onPressed: () => {
               showAboutDialog(
                 context: context,
