@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TalkCardWidget extends StatefulWidget {
   final String studentCode;
   final String studentName;
-  final onTap;
+  final Function()? onTap;
 
   const TalkCardWidget({
     Key? key,
@@ -12,6 +12,7 @@ class TalkCardWidget extends StatefulWidget {
     this.onTap,
   }) : super(key: key);
 
+  @override
   _TalkCardWidgetState createState() => _TalkCardWidgetState();
 }
 
@@ -19,19 +20,19 @@ class _TalkCardWidgetState extends State<TalkCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      padding: const EdgeInsets.fromLTRB(15, 5, 15, 5),
       child: Card(
-        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        shape: RoundedRectangleBorder(
+        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(25),
           ),
         ),
         child: InkWell(
           onTap: widget.onTap ?? () {},
-          borderRadius: BorderRadius.all(Radius.circular(25)),
+          borderRadius: const BorderRadius.all(Radius.circular(25)),
           child: Container(
-            padding: EdgeInsets.all(26),
+            padding: const EdgeInsets.all(26),
             width: double.infinity,
             child: Row(
               children: [
@@ -45,19 +46,19 @@ class _TalkCardWidgetState extends State<TalkCardWidget> {
                     Container(
                       child: Text(
                         widget.studentName,
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                       ),
-                      margin: EdgeInsets.fromLTRB(10, 0, 0, 5),
+                      margin: const EdgeInsets.fromLTRB(10, 0, 0, 5),
                     ),
                     Container(
-                      child: Text(
+                      child: const Text(
                         '5개의 에피소드',
                         style: TextStyle(fontSize: 13, color: Colors.grey),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         softWrap: false,
                       ),
-                      margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                     ),
                   ],
                 ),

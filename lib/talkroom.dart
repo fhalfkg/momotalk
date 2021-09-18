@@ -5,7 +5,7 @@ import 'package:momotalk/components/bottomchatbar.dart';
 class TalkRoomPage extends StatefulWidget {
   final String title;
 
-  TalkRoomPage({
+  const TalkRoomPage({
     Key? key,
     required this.title,
   }) : super(key: key);
@@ -30,22 +30,22 @@ class _TalkRoomPageState extends State<TalkRoomPage> {
         centerTitle: true,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) => SimpleDialog(
-                  title: Text('에피소드 선택'),
+                  title: const Text('에피소드 선택'),
                   children: [
                     Container(
-                      padding: EdgeInsets.only(left: 25, right: 25),
+                      padding: const EdgeInsets.only(left: 25, right: 25),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text('테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트'),
                         ],
                       ),
@@ -54,71 +54,69 @@ class _TalkRoomPageState extends State<TalkRoomPage> {
                 ),
               );
             },
-            icon: Icon(Icons.list),
+            icon: const Icon(Icons.list),
           ),
         ],
       ),
       body: Stack(
         children: [
-          Container(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        Bubble(
-                          style: _bubbleStyle,
-                          child: Text(
-                            '테스트테스트테스트테스트\n테스트테스트테스트테스트',
-                            style: TextStyle(color: Colors.white),
-                          ),
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Bubble(
+                        style: _bubbleStyle,
+                        child: const Text(
+                          '테스트테스트테스트테스트\n테스트테스트테스트테스트',
+                          style: TextStyle(color: Colors.white),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Column(
             children: [
-              Spacer(),
+              const Spacer(),
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 height: MediaQuery.of(context).size.height * 0.2,
                 width: MediaQuery.of(context).size.width * 0.9,
                 decoration: BoxDecoration(
-                  color: Color(0xFFE2EDF2),
+                  color: const Color(0xFFE2EDF2),
                   border: Border.all(
                     width: 1,
                     color: Colors.grey,
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                 ),
                 child: Column(
                   children: [
                     Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(right: 5),
-                          color: Color(0xFF4E8FB2),
+                          margin: const EdgeInsets.only(right: 5),
+                          color: const Color(0xFF4E8FB2),
                           height: 15,
                           width: 2,
                         ),
-                        Text('답장하기'),
+                        const Text('답장하기'),
                       ],
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 8),
+                      margin: const EdgeInsets.only(top: 8),
                       color: Colors.grey,
                       height: 1,
                       width: MediaQuery.of(context).size.width * 0.9,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       height: MediaQuery.of(context).size.height * 0.06,
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
@@ -127,19 +125,20 @@ class _TalkRoomPageState extends State<TalkRoomPage> {
                           width: 1,
                           color: Colors.grey,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0)),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text('500배'),
                         ],
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       height: MediaQuery.of(context).size.height * 0.06,
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
@@ -148,12 +147,13 @@ class _TalkRoomPageState extends State<TalkRoomPage> {
                           width: 1,
                           color: Colors.grey,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10.0)),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text('50000배'),
                         ],
                       ),
@@ -161,7 +161,7 @@ class _TalkRoomPageState extends State<TalkRoomPage> {
                   ],
                 ),
               ),
-              BottomChatBar(),
+              const BottomChatBar(),
             ],
           ),
         ],

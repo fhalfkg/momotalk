@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'components/studentcard.dart';
 
 class MomoFriendsPage extends StatefulWidget {
-  MomoFriendsPage({Key? key}) : super(key: key);
+  const MomoFriendsPage({Key? key}) : super(key: key);
 
   @override
   _MomoFriendsPageState createState() => _MomoFriendsPageState();
@@ -43,7 +43,7 @@ class _MomoFriendsPageState extends State<MomoFriendsPage> {
             },
           );
         } else {
-          return Scaffold();
+          return const Scaffold();
         }
       },
     );

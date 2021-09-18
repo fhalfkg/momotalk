@@ -7,30 +7,32 @@ import 'tools/creatematerialcolor.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Momotalk',
       theme: ThemeData(
-          primarySwatch: createMaterialColor(Color(0xFFFA92A4)),
-          primaryTextTheme: TextTheme(
+          primarySwatch: createMaterialColor(const Color(0xFFFA92A4)),
+          primaryTextTheme: const TextTheme(
             headline6: TextStyle(color: Colors.white),
           ),
-          primaryIconTheme: IconThemeData(color: Colors.white),
+          primaryIconTheme: const IconThemeData(color: Colors.white),
           fontFamily: 'GyeonggiTitle'),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -38,8 +40,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  var _packageInfo;
-  final List<Widget> _children = [MomoFriendsPage(), TalkListPage()];
+  late PackageInfo _packageInfo;
+  final List<Widget> _children = [
+    const MomoFriendsPage(),
+    const TalkListPage()
+  ];
 
   getPackageInfo() async {
     var packageInfo = await PackageInfo.fromPlatform();
@@ -59,16 +64,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        title: Image(image: AssetImage('images/momotalk.png'), width: 100),
+        title:
+            const Image(image: AssetImage('images/momotalk.png'), width: 100),
         titleSpacing: 25,
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
-            icon: Icon(Icons.info_outline),
+            icon: const Icon(Icons.info_outline),
             onPressed: () => {
               showAboutDialog(
                 context: context,
-                applicationIcon: Image(
+                applicationIcon: const Image(
                   image: AssetImage('images/arona.png'),
                   width: 40,
                   height: 40,
@@ -90,7 +96,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 "images/people.svg",
                 width: 30,
                 height: 30,
-                color: _currentIndex == 0 ? Colors.white : Color(0xFF78808C),
+                color:
+                    _currentIndex == 0 ? Colors.white : const Color(0xFF78808C),
               ),
               label: "모모프레"),
           BottomNavigationBarItem(
@@ -98,7 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 "images/talk.svg",
                 width: 30,
                 height: 30,
-                color: _currentIndex == 1 ? Colors.white : Color(0xFF78808C),
+                color:
+                    _currentIndex == 1 ? Colors.white : const Color(0xFF78808C),
               ),
               label: "대화"),
         ],
@@ -107,8 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
             _currentIndex = index;
           });
         },
-        backgroundColor: Color(0xFF4D5B70),
-        selectedItemColor: Color(0xFF67788C),
+        backgroundColor: const Color(0xFF4D5B70),
+        selectedItemColor: const Color(0xFF67788C),
         showSelectedLabels: false,
         showUnselectedLabels: false,
       ),
